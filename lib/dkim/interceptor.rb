@@ -12,7 +12,7 @@ module Dkim
       end
 
       # generate new signature
-      dkim_signature = SignedMail.new(message.encoded).dkim_header.value
+      dkim_signature = SignedMail.new(message.encoded).dkim_header.value.strip
 
       # prepend signature to message
       message.header.fields.unshift Mail::DkimField.new(dkim_signature)
